@@ -2,8 +2,8 @@ package models
 
 import (
 	"fmt"
-	"github.com/jinzhu/gorm"
 	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
@@ -17,7 +17,7 @@ func ConnectToDb() {
 		panic("Cannot connect to DB")
 	}
 	User := User{}
-	err := DB.AutoMigrate(&User)
+	err := DB.AutoMigrate(&User, &Car{})
 	if err != nil {
 		return
 	}
