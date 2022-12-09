@@ -1,11 +1,16 @@
 package controllers
 
 import (
-	"Assessment-Task-Wancloud-Inc/models"
+	"finalTaskWan/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
+
+type LoginInput struct {
+	Email    string `json:"email" binding:"required"`
+	Password string `json:"password" binding:"required"`
+}
 
 func Login(c *gin.Context) {
 

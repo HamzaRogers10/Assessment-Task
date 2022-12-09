@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"Assessment-Task-Wancloud-Inc/models"
+	"finalTaskWan/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

@@ -1,1 +1,0 @@
-# Assessment-Task-Wancloud-Inc

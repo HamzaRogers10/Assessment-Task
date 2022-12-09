@@ -1,7 +1,10 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"github.com/jinzhu/gorm"
+)
 
+// User structs
 type User struct {
 	gorm.Model
 	Name     string `gorm:"size:255;not null;" json:"name"`
