@@ -16,6 +16,8 @@ func GetUserByID(uid uint) (User, error) {
 	u.PrepareGive()
 	return u, nil
 }
+
+// PrepareGive function to remove the hashed password string before returning it for security purposes.
 func (u *User) PrepareGive() {
 	u.Password = ""
 }

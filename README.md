@@ -32,21 +32,20 @@ This route is to register our login information, so it can be verified.
 #### Login
 This route will be used to authenticate the user by providing a "email" and "password" then generate and gives JSON Web Token in return
 ##### Creating Endpoints Of Application
-##### Creating Register Endpoint
+####  Register Endpoint
 Creating our controller file that will contain our logic for the registration process.
-##### Validation
+#### Validation
 Validate inputs that are coming into our register endpoint, the input we will need are name email and password.
 Using a validation feature that comes with gin which is called binding.
 
-#### Creating Login Endpoint
+#### Login Endpoint
 Login endpoint going to do is very simple, it will receive a email and username, check whether it matches the credential in our database, if it does return a token, if it doesn’t return an error response.
 #### Database Connection and Model
 To save our credentials in our database, we need to create a database connection to our desired database, I will be using MySQL database that is already installed in my system.
 #### Creating .env file
-Add 2  variables into .env file
-which is TOKEN_HOUR_LIFESPAN and API_SECRET
+Add variables into .env file
+which is API_SECRET
 
-TOKEN_HOUR_LIFESPAN will determine how long each token will last (hour)  
 API_SECRET is your own secret string for signing the token
 #### Creating JWT Authentication Middleware
 To authenticate a user, a client application must send a JSON Web Token (JWT) in the authorization header of the HTTP request to your backend API. API Gateway validates the token on behalf of your API, so you don't have to add any code in your API to process the authentication

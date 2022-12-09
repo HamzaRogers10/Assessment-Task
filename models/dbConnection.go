@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// To save credentials in the database,lets create a Database connection
 var DB *gorm.DB
 var urlDSN = "root:Hamza@10@tcp(localhost:3306)/carDb?charset=utf8mb4&parseTime=True&loc=Local"
 var err error
