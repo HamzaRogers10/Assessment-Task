@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+// it will contain all of our token processing functions
 func GenerateToken(userId uint) (string, error) {
 
 	claims := jwt.MapClaims{}
@@ -17,10 +18,12 @@ func GenerateToken(userId uint) (string, error) {
 	claims["user_id"] = userId
 	claims["exp"] = time.Now().Add(time.Hour).Unix()
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-
+	//API_SECRET is your own secret string for signing the token
 	return token.SignedString([]byte(os.Getenv("API_SECRET")))
 
 }
+
+// Chekc the token is valid or not
 func TokenValid(c *gin.Context) error {
 	tokenString := ExtractToken(c)
 	_, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
@@ -35,6 +38,7 @@ func TokenValid(c *gin.Context) error {
 	return nil
 }
 
+// check the token is valid  and print the message
 func ExtractToken(c *gin.Context) string {
 	token := c.Query("token")
 	if token != "" {

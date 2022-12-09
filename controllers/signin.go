@@ -12,8 +12,10 @@ type LoginInput struct {
 	Password string `json:"password" binding:"required"`
 }
 
+//  it will receive a email and password
 func Login(c *gin.Context) {
 
+	// it matches the credential in our database,
 	var input LoginInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
@@ -24,7 +26,7 @@ func Login(c *gin.Context) {
 	u := models.User{}
 	u.Email = input.Email
 	u.Password = input.Password
-
+	//if it does return a token, if it doesn't return an error response
 	token, err := models.LoginCheck(u.Email, u.Password)
 	fmt.Println(err)
 	if err != nil {
