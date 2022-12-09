@@ -24,7 +24,7 @@ func main() {
 	protected.Use(middleware.JwtAuthMiddleware())
 	protected.GET("/user", controllers.CurrentUser)
 
-	r.Run(":8080")
+	r.Run(":3000")
 }
 
 func backgroundTask() {
