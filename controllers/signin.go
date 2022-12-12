@@ -7,16 +7,11 @@ import (
 	"net/http"
 )
 
-type LoginInput struct {
-	Email    string `json:"email" binding:"required"`
-	Password string `json:"password" binding:"required"`
-}
-
-//  it will receive a email and password
+// Login it will receive an email and password
 func Login(c *gin.Context) {
 
 	// it matches the credential in our database,
-	var input LoginInput
+	var input models.LoginInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

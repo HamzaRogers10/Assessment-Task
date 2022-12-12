@@ -18,7 +18,7 @@ func ConnectToDb() {
 		panic("Cannot connect to DB")
 	}
 	User := User{}
-	err := DB.AutoMigrate(&User, &Car{})
+	err = DB.AutoMigrate(&User, &Car{})
 	if err != nil {
 		return
 	}

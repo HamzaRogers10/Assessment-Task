@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-
 	"finalTaskWan/jwtAuthentication"
 	"golang.org/x/crypto/bcrypt"
 	"log"

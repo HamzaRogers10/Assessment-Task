@@ -30,14 +30,14 @@ func GetData() []models.Car {
 		fmt.Println(err)
 		return nil
 	}
-	rsp := string(body)
+	response := string(body)
 	//split the string into model
-	listRsp := strings.Split(rsp, "\r\n")
-	fmt.Println(listRsp)
-	carList := []models.Car{}
+	listResponse := strings.Split(response, "\r\n")
+	fmt.Println(listResponse)
+	var carList []models.Car
 	var temp []string
-	for i := 1; i <= 10; i++ {
-		temp = strings.Split(listRsp[i], ",")
+	for i := 1; i <= 11; i++ {
+		temp = strings.Split(listResponse[i], ",")
 		carList = append(carList, models.Car{
 			Name:         temp[0],
 			Year:         temp[1],
@@ -45,21 +45,10 @@ func GetData() []models.Car {
 			KmDriven:     temp[3],
 			Fuel:         temp[4],
 			SellerType:   temp[5],
-			Transmission: temp[5],
+			Transmission: temp[6],
 			Owner:        temp[7],
 		})
 	}
 	fmt.Println(temp)
 	return carList
-}
-
-// Save the car data in the database
-func SaveData(cars []models.Car) error {
-	for i := 1; i <= 50; i++ {
-		//database query to store the generated into the database
-		err := models.DB.Model(&models.Car{}).Select("name", " year", "selling_price", "km_driven", "fuel", "seller_type", "transmission", "owner").Create(&cars).Error
-		return err
-	}
-	fmt.Println(cars)
-	return nil
 }
