@@ -2,6 +2,7 @@ package main
 
 import (
 	"finalTaskWan/controllers"
+	"finalTaskWan/database"
 	"finalTaskWan/middleware"
 	"finalTaskWan/models"
 	"fmt"
@@ -36,8 +37,8 @@ func backgroundTask() {
 
 	for {
 
-		rsp := controllers.GetData()
-		err := controllers.SaveData(rsp)
+		response := controllers.GetData()
+		err := database.SaveData(response)
 		fmt.Println(err)
 		time.Sleep(time.Hour)
 	}
