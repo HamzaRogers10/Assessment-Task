@@ -1,10 +1,10 @@
 package main
 
 import (
+	"finalTaskWan/config"
 	"finalTaskWan/controllers"
 	"finalTaskWan/database"
 	"finalTaskWan/middleware"
-	"finalTaskWan/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"time"
@@ -13,7 +13,7 @@ import (
 // main function
 func main() {
 
-	models.ConnectToDb()
+	config.ConnectToDb()
 	go backgroundTask()
 
 	r := gin.Default()
