@@ -1,0 +1,87 @@
+swagger: "2.0"
+host: "localhost:3000"
+consumes:
+  - application/json
+info:
+  title: Assessment Task Wancloud
+  version: 0.1.0
+basePath: /api
+produces:
+  - application/json
+schemes:
+  - https
+paths:
+  /register:
+    post:
+      tags: [Users]
+      summary: "This endpoint entertain the registering user functionality"
+      operationId: RegisterUser
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "RegisterUserBody"
+          description: This is how the body of the register user request body will look like.
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/RegisterUserDefinition"
+      responses:
+        200:
+          description: Sucessfull Registeration
+          schema:
+            $ref: "#/definitions/SuccessResponseDefinition"
+        400:
+          description: server could not understand the request due to invalid syntax
+
+  /login:
+    post:
+      tags: [Users]
+      summary: "logging the user"
+      operationId: "loginUser"
+      produces: [application/json]
+      parameters:
+        - name: "LoginUserBody"
+          in: "body"
+          description: This is how the body of the login user request body will look like.
+          required: true
+          schema:
+            $ref: "#/definitions/LoginUserDefinition"
+      responses:
+        "200":
+          description: Sucessfull Registeration
+          schema:
+            $ref: "#/definitions/LoginSuccessResponseDefinition"
+        "400":
+          description: "Invalid username/password supplied"
+
+definitions:
+  RegisterUserDefinition:
+    type: object
+    required: [Name, Email, Password]
+    properties:
+      Name:
+        type: string
+      Email:
+        type: string
+      Password:
+        type: string
+  LoginUserDefinition:
+    type: object
+    required: [Email, Password]
+    properties:
+      Email:
+        type: string
+      Password:
+        type: string
+  SuccessResponseDefinition:
+    type: object
+    properties:
+      message:
+        type: string
+  LoginSuccessResponseDefinition:
+    type: object
+    properties:
+      token:
+        type: string

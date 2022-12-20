@@ -12,7 +12,7 @@ import (
 // GetData Create a function that will call URL to get the data periodically
 func GetData() []models.Car {
 	//function to get the data generated from the URL
-	url := "https://storage.googleapis.com/kagglesdsdata/datasets/33080/1584391/CAR%20DETAILS%20FROM%20CAR%20DEKHO.csv?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com@kaggle-161607.iam.gserviceaccount.com/20221206/auto/storage/goog4_request&X-Goog-Date=20221206T171917Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=66a37dd78b2c4452c02f3725d79eeda009ff71879bb199af06b2a52b9eaa99ca9b42e5944d0bdd6e878a204e0af6cd231fb2efde9671348f1c6180be4aa267ed476e61a77597339f1e2a5a7b3f08a6f756bb0b0f18caf109d4f8562b5c2a8854144e7ad71cbc24f5f80f04279a8c566b908ecfde3209f159a679312877a1c5b478ea9f1b04ee5d26d4f07dc975d1b2861b397100450e4b8813e3bf9f3aa04313f178a274d2df5d60a0e90047e6e22154806fd9fc3c90749a5708722a0d40e5e7aff5249f1651fa892411370e12e0bd94db1d0fc53c1bf07131e4ff7c6afa540cbcd126ac81aed6d43a2595490326a5d2b7fe4a8d9055c0cfd1034f4d06aadaaa"
+	url := "https://storage.googleapis.com/kagglesdsdata/datasets/33080/1584391/CAR DETAILS FROM CAR DEKHO.csv?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com@kaggle-161607.iam.gserviceaccount.com/20221220/auto/storage/goog4_request&X-Goog-Date=20221220T151224Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=008e49bfa7f112ba970f80d63b0a5d119b5e7bc30a46f4928aeaf7fa132ecafa33a677e470f3024c0df018b89ae0405a2e922763b38f23924aee5a79687c67264151a7890cd0408af3dfeca1cb69e65e050bafbe2bd54c230052fb04e517274cc2d9a1ad11c4390675d29dac4f1c10f79c3ac34d76864211c7977517881e96ea99d025825add51587493afd4b662ff4b90fe6e67487e297551c5ccfc62b13b4f0d6d4647a6be04e41ffdf2b96071628ce3b6610c4983df301419639a6d7718f38f17bc51ef697131aca8d205372cc81e79e4f147382a0a4582fce8a9606e2102ea59582089b6e1572d21727f6ba45e8601a53afa0344c0c9f6f05e2e6e991dbe"
 	method := "GET"
 	client := &http.Client{}
 	req, err := http.NewRequest(method, url, nil)
@@ -36,7 +36,7 @@ func GetData() []models.Car {
 	fmt.Println(listResponse)
 	var carList []models.Car
 	var temp []string
-	for i := 1; i <= 11; i++ {
+	for i := 1; i <= 30; i++ {
 		temp = strings.Split(listResponse[i], ",")
 		carList = append(carList, models.Car{
 			Name:         temp[0],

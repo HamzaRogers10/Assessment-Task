@@ -1,12 +1,13 @@
 package controllers
 
 import (
+	"finalTaskWan/config"
 	"finalTaskWan/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-// Register function will register the detail of user
+// Register  function will register the detail of user
 func Register(c *gin.Context) {
 
 	var input models.RegisterInput
@@ -21,7 +22,7 @@ func Register(c *gin.Context) {
 	u.Password = input.Password
 	var err error
 	//DB query to store user data into the database
-	err = models.DB.Model(&models.User{}).Select("name", " email", "password").Create(&u).Error
+	err = config.DB.Model(&models.User{}).Select("name", " email", "password").Create(&u).Error
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

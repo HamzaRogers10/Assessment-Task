@@ -1,13 +1,14 @@
 package controllers
 
 import (
+	"finalTaskWan/database"
 	"finalTaskWan/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-// Login it will receive an email and password
+// it will receive a email and password
 func Login(c *gin.Context) {
 
 	// it matches the credential in our database,
@@ -22,7 +23,7 @@ func Login(c *gin.Context) {
 	u.Email = input.Email
 	u.Password = input.Password
 	//if it does return a token, if it doesn't return an error response
-	token, err := models.LoginCheck(u.Email, u.Password)
+	token, err := database.LoginCheck(u.Email, u.Password)
 	fmt.Println(err)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "username or password is incorrect."})

@@ -49,6 +49,14 @@ which is API_SECRET
 API_SECRET is your own secret string for signing the token
 #### Creating JWT Authentication Middleware
 To authenticate a user, a client application must send a JSON Web Token (JWT) in the authorization header of the HTTP request to your backend API. API Gateway validates the token on behalf of your API, so you don't have to add any code in your API to process the authentication
+#### Using the URL provided above, 
+makes it automated to retrieve and store data into a local relational database.
+
+![img_6.png](img_6.png)
+#### Store the car data into Database
+![img_7.png](img_7.png)
+
+
 #### Getting Started :
 **How to Install and Run the Application**
 

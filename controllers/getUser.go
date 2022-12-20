@@ -1,8 +1,8 @@
 package controllers
 
 import (
+	"finalTaskWan/database"
 	"finalTaskWan/jwtAuthentication"
-	"finalTaskWan/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -17,7 +17,7 @@ func CurrentUser(c *gin.Context) {
 		return
 	}
 	// it authenticated the user by ID , as ID is always unique
-	u, err := models.GetUserByID(userId)
+	u, err := database.GetUserByID(userId)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
