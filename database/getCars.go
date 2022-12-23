@@ -1,4 +1,4 @@
-package controllers
+package database
 
 import (
 	"finalTaskWan/config"
@@ -8,8 +8,8 @@ import (
 )
 
 func GetCars(c *gin.Context) {
-	var cars []models.NewCars
-	config.DB.Find(&cars)
+	var cars []models.Car
+	config.DB.Limit(10).Offset(0).Find(&cars)
 
 	c.JSON(http.StatusOK, gin.H{"data": cars})
 }
