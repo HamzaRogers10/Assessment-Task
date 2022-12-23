@@ -25,6 +25,8 @@ func main() {
 	userGroup.POST("/login", controllers.Login)
 	//this will be the route for our protected endpoints
 	userGroup.GET("/user", controllers.CurrentUser)
+	userGroup.GET("/cars", database.GetCars)
+
 	userGroup.Use(middleware.JwtAuthMiddleware())
 
 	r.Run(":3000")
