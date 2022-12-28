@@ -1,21 +1,16 @@
 package controllers
 
 import (
+	"finalTaskWan/config"
 	"finalTaskWan/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-type RegisterInput struct {
-	Name     string `json:"name" binding:"required"`
-	Email    string `json:"email" binding:"required"`
-	Password string `json:"password" binding:"required"`
-}
-
-// register function will register the detail of user
+// Register  function will register the detail of user
 func Register(c *gin.Context) {
 
-	var input RegisterInput
+	var input models.RegisterInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -27,7 +22,7 @@ func Register(c *gin.Context) {
 	u.Password = input.Password
 	var err error
 	//DB query to store user data into the database
-	err = models.DB.Model(&models.User{}).Select("name", " email", "password").Create(&u).Error
+	err = config.DB.Model(&models.User{}).Select("name", " email", "password").Create(&u).Error
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

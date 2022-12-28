@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-// it will contain all of our token processing functions
+// GenerateToken it will contain all of our token processing functions
 func GenerateToken(userId uint) (string, error) {
 
 	claims := jwt.MapClaims{}
@@ -23,7 +23,7 @@ func GenerateToken(userId uint) (string, error) {
 
 }
 
-// Chekc the token is valid or not
+// TokenValid Check the token is valid or not
 func TokenValid(c *gin.Context) error {
 	tokenString := ExtractToken(c)
 	_, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
@@ -38,7 +38,7 @@ func TokenValid(c *gin.Context) error {
 	return nil
 }
 
-// check the token is valid  and print the message
+// ExtractToken check the token is valid  and print the message
 func ExtractToken(c *gin.Context) string {
 	token := c.Query("token")
 	if token != "" {
